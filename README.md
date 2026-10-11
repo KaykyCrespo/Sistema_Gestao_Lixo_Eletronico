@@ -129,6 +129,11 @@ nomes legados e foram preservados para evitar alteracoes de comportamento.
 - A versao do Spring Boot e antiga. Revise dependencias e seguranca antes de qualquer implantacao publica; este projeto nao deve ser tratado como pronto para producao.
 - Nunca publique senhas, tokens, arquivos de ambiente ou dados pessoais. Credenciais anteriormente publicadas devem ser trocadas, mesmo apos sua remocao dos arquivos atuais, pois podem permanecer no historico Git.
 
+O historico alcancavel deste repositorio foi sanitizado nesta revisao, com
+backup original preservado apenas localmente. Isso nao elimina copias externas,
+caches ou forks. Ao utilizar uma copia anterior, alinhe-a ao historico novo
+para nao reintroduzir a configuracao antiga. A troca das senhas e obrigatoria.
+
 ## Autoria e Licenca
 
 Kayky Crespo dos Santos, conforme a autoria registrada na [licenca MIT](LICENSE).

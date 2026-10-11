@@ -51,7 +51,7 @@ o E-Waste, por exemplo, tem backend Java e templates HTML.
 ## Pendencias em Ordem de Prioridade
 
 - [ ] Trocar a senha de banco anteriormente exposta; se reutilizada, trocar tambem nos outros servicos. Nao registrar a nova senha em documentos ou mensagens.
-- [ ] Concluir a limpeza dos historicos do E-Waste e da copia RAR com backups locais. Acao autorizada pelo proprietario; publicacao deve usar force-with-lease e verificar as referencias remotas.
+- [x] Limpar os historicos do E-Waste e da copia RAR com backups locais. Ambos publicados com force-with-lease e referencias remotas verificadas; nenhuma senha literal de datasource encontrada nas referencias sanitizadas do E-Waste e nenhum RAR no historico alcancavel do legado.
 - [x] Preparar JDK 17 e MySQL portateis, compilar o codigo principal e validar os fluxos reais no navegador.
 - [ ] Executar a suite automatizada e o empacotamento: download de byte-buddy-agent:1.12.18 bloqueado com HTTP 403 neste ambiente. Nao desativar a validacao TLS nem remover testes para mascarar o bloqueio.
 - [ ] Capturar telas legiveis: navegador integrado produziu imagens incompletas e captura headless foi bloqueada por politica corporativa. Nenhuma imagem invalida deve ser publicada.
@@ -59,7 +59,13 @@ o E-Waste, por exemplo, tem backend Java e templates HTML.
 - [x] Renomear somente o E-Waste para sistema-gestao-lixo-eletronico e atualizar o remoto local, conforme aprovado.
 - [ ] Completar a revisao dos projetos privados sem acesso Git/API; tratar os indicadores de segredos no relatorio local, sem publicar seu conteudo.
 - [x] Comparar o material de lixo eletronico; manter todos os repositorios ativos e preservar o legado em backup, conforme aprovado.
-- [ ] Publicar as alteracoes locais revisadas com mensagens de commit descritivas e autoria preservada.
+- [x] Publicar as alteracoes locais revisadas com mensagens de commit descritivas, autoria antiga preservada e endereco noreply nos novos commits.
+
+Os backups originais contem material sensivel e nao devem ser publicados nem
+restaurados sobre os repositorios limpos. Copias antigas precisam ser alinhadas
+ao historico novo para evitar reintroduzir os arquivos removidos. A limpeza de
+referencias nao garante a exclusao de caches, forks ou objetos antigos mantidos
+pelo provedor; se necessario, solicitar a remocao ao suporte do GitHub.
 
 ## Historico e Autoria
 
