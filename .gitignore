@@ -1,0 +1,17 @@
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+target/
+*.log
+.env
+.env.*
+!.env.example
+application-local.properties
+application-local.yml
+application-local.yaml
+*.pem
+*.key
+.DS_Store
+Thumbs.db

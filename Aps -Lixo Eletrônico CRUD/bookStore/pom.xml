@@ -11,10 +11,10 @@
 	<groupId>com.bookStore</groupId>
 	<artifactId>bookStore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bookStore</name>
-	<description>This is book store project</description>
+	<name>E-Waste</name>
+	<description>Sistema academico de gestao de lixo eletronico</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -58,14 +58,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>16</source>
-                    <target>16</target>
-                </configuration>
-            </plugin>
         </plugins>
 	</build>
 

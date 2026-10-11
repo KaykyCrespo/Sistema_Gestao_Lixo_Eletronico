@@ -65,18 +65,18 @@
 			<input type="hidden" name="id" th:value="${book.id}"/>
 			<div class="mb-3">
 				<label for="name" class="form-label">Tipo de Lixo</label>
-				<input type="text" class="form-control" name="name" style="width: 100%;">
+				<input type="text" class="form-control" th:field="*{name}" style="width: 100%;">
 			</div>
 
 			<div class="mb-3">
 			<label for="author" class="form-label">Quantidade</label>
-			<input type="text" class="form-control" name="author" style="width: 100%;">
+			<input type="text" class="form-control" th:field="*{author}" style="width: 100%;">
 			</div>
 
 			<div class="mb-3">
 				<label for="price" class="form-label">Peso</label>
 				<div style="display: flex; align-items: center; width: 115%;" >
-					<input type="text" class="form-control" name="price" style="width: 90%;">
+					<input type="text" class="form-control" th:field="*{price}" style="width: 90%;">
 					<span style="margin-left: 5px;">Gramas</span>
 				</div>
 			</div>
@@ -102,8 +102,7 @@
 		crossorigin="anonymous"></script>
 <script>
 	document.getElementById('btn_cancelar').addEventListener('click', function() {
-		event.preventDefault(); // Evita o envio padrão do formulário
-        window.location.href = 'http://localhost:8080/available_books'; // Substitua 'sua_pagina.html' pelo URL da página para a qual você deseja redirecionar
+		window.location.href = '/available_books';
     });
 
 
