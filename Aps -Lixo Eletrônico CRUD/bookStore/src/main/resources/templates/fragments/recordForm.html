@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<body>
+<main class="container workspace" th:fragment="form(editing)">
+  <div class="page-heading"><div><p class="eyebrow">Inventario / Registro</p><h1 th:text="${editing ? 'Editar residuo' : 'Novo residuo'}"></h1><p th:text="${editing ? 'Registro #' + book.id : 'Dados do equipamento e da pesagem'}"></p></div><span class="heading-icon"><i data-lucide="package-plus" aria-hidden="true"></i></span></div>
+  <div class="record-form-layout">
+    <section class="form-surface" aria-labelledby="formTitle">
+      <div class="form-section-heading"><h2 id="formTitle">Dados do residuo</h2><span class="status-label" th:text="${editing ? 'Edicao' : 'Novo registro'}"></span></div>
+      <form th:action="@{/save}" method="post" th:object="${book}" data-prevent-double-submit>
+        <input type="hidden" th:field="*{id}">
+        <div class="feedback error" role="alert" th:if="${#fields.hasAnyErrors()}">Revise os campos destacados antes de salvar.</div>
+        <div class="mb-4"><label class="form-label" for="name">Tipo de residuo <span aria-hidden="true">*</span></label><input class="form-control" type="text" th:field="*{name}" th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'" required maxlength="100" placeholder="Ex.: Notebook" aria-describedby="nameError" th:attr="aria-invalid=${#fields.hasErrors('name')}"><div id="nameError" class="invalid-feedback" th:errors="*{name}"></div></div>
+        <div class="form-grid">
+          <div><label class="form-label" for="author">Quantidade <span aria-hidden="true">*</span></label><input class="form-control" type="number" th:field="*{author}" th:classappend="${#fields.hasErrors('author')} ? 'is-invalid'" required min="1" max="999999" step="1" placeholder="0" aria-describedby="quantityError" th:attr="aria-invalid=${#fields.hasErrors('author')}"><div id="quantityError" class="invalid-feedback" th:errors="*{author}"></div></div>
+          <div><label class="form-label" for="price">Peso unitario <span aria-hidden="true">*</span></label><div class="input-group"><input class="form-control" type="number" th:field="*{price}" th:classappend="${#fields.hasErrors('price')} ? 'is-invalid'" required min="0.01" max="9999999.99" step="0.01" placeholder="0,00" aria-describedby="weightUnit weightError" th:attr="aria-invalid=${#fields.hasErrors('price')}"><span class="input-group-text" id="weightUnit">g</span><div id="weightError" class="invalid-feedback" th:errors="*{price}"></div></div></div>
+        </div>
+        <div class="form-actions"><a class="btn btn-light" th:href="@{/available_books}">Cancelar</a><button class="btn btn-primary" type="submit"><i data-lucide="check" aria-hidden="true"></i><span th:text="${editing ? 'Salvar alteracoes' : 'Cadastrar residuo'}"></span></button></div>
+      </form>
+    </section>
+    <aside class="record-context"><i data-lucide="scale" aria-hidden="true"></i><h2>Pesagem</h2><dl><dt>Unidade de medida</dt><dd>Gramas (g)</dd><dt>Equivalencia</dt><dd>1 kg = 1.000 g</dd><dt>Peso total</dt><dd>Quantidade x peso unitario</dd></dl><div class="context-note"><i data-lucide="leaf" aria-hidden="true"></i>Descarte responsavel</div></aside>
+  </div>
+</main>
+</body>
+</html>

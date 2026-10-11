@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${title + ' | E-Waste'}">E-Waste</title>
+  <link rel="stylesheet" th:href="@{/vendor/bootstrap/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+  <header class="site-header" th:fragment="navigation(active)">
+    <nav class="navbar navbar-expand-lg app-nav container" aria-label="Navegacao principal">
+      <a class="brand" th:href="@{/}"><span class="brand-mark"><i data-lucide="recycle" aria-hidden="true"></i></span>E-Waste</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Abrir navegacao"><i data-lucide="menu" aria-hidden="true"></i></button>
+      <div class="collapse navbar-collapse" id="mainNavigation">
+        <div class="navbar-nav ms-lg-4 gap-lg-1">
+          <a class="nav-link" th:classappend="${active == 'home'} ? 'active'" th:href="@{/}" th:attr="aria-current=${active == 'home' ? 'page' : null}">Visao geral</a>
+          <a class="nav-link" th:classappend="${active == 'records'} ? 'active'" th:href="@{/available_books}" th:attr="aria-current=${active == 'records' ? 'page' : null}">Residuos</a>
+          <a class="nav-link" th:classappend="${active == 'collection'} ? 'active'" th:href="@{/my_books}" th:attr="aria-current=${active == 'collection' ? 'page' : null}">Meu lixo</a>
+        </div>
+        <a class="btn btn-primary ms-lg-auto" th:href="@{/book_register}"><i data-lucide="plus" aria-hidden="true"></i>Novo registro</a>
+      </div>
+    </nav>
+  </header>
+  <footer class="site-footer" th:fragment="footer"><div class="container"><span>E-Waste</span><span>Gestao de residuos eletronicos</span><span>Projeto academico</span></div></footer>
+  <th:block th:fragment="scripts">
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+        <div class="modal-header"><h2 class="modal-title fs-5" id="deleteTitle">Confirmar exclusao</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button></div>
+        <div class="modal-body"><p id="deleteDescription" class="mb-0"></p></div>
+        <div class="modal-footer"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button><form id="deleteForm" method="post"><button type="submit" class="btn btn-danger"><i data-lucide="trash-2" aria-hidden="true"></i>Excluir</button></form></div>
+      </div></div>
+    </div>
+    <script th:src="@{/vendor/bootstrap/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/vendor/lucide/lucide.min.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
+  </th:block>
+</body>
+</html>

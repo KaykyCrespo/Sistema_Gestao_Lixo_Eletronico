@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Book {
@@ -11,8 +16,16 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@NotBlank(message = "Informe o tipo de residuo.")
+	@Size(max = 100, message = "Use no maximo 100 caracteres.")
 	private String name;
+	@Pattern(regexp = "[1-9][0-9]{0,5}", message = "Informe uma quantidade inteira entre 1 e 999999.")
+	@NotBlank(message = "Informe a quantidade.")
 	private String author;
+	@NotBlank(message = "Informe o peso unitario.")
+	@Pattern(regexp = "(?:0|[1-9][0-9]{0,6})(?:\\.[0-9]{1,2})?", message = "Informe o peso com ate duas casas decimais.")
+	@DecimalMin(value = "0.01", message = "O peso deve ser maior que zero.")
+	@DecimalMax(value = "9999999.99", message = "O peso ultrapassa o limite permitido.")
 	private String price;
 	public Book(int id, String name, String author, String price) {
 		super();

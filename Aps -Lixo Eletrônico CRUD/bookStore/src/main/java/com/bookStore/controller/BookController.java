@@ -8,8 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import javax.validation.Valid;
 
 import com.bookStore.entity.Book;
 import com.bookStore.entity.MyBookList;
@@ -35,12 +38,14 @@ public class BookController {
 	private MyBookListService myBookService;
 	
 	@GetMapping("/")
-	public String home() {
+	public String home(Model model) {
+		model.addAttribute("book", service.getAllBook());
 		return "home";
 	}
 	
 	@GetMapping("/book_register")
-	public String bookRegister() {
+	public String bookRegister(Model model) {
+		model.addAttribute("book", new Book());
 		return "bookRegister";
 	}
 
@@ -51,9 +56,14 @@ public class BookController {
 		return new ModelAndView("bookList","book",list);
 	}
 	@PostMapping("/save")
-	public String addBook(@ModelAttribute Book b) {
-		service.save(b);
-		System.out.println(b);
+	public String addBook(@Valid @ModelAttribute("book") Book book, BindingResult result, RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()) {
+			return book.getId() > 0 ? "bookEdit" : "bookRegister";
+		}
+		boolean editing = book.getId() > 0;
+		book.setName(book.getName().trim());
+		service.save(book);
+		redirectAttributes.addFlashAttribute("success", editing ? "Registro atualizado." : "Residuo cadastrado.");
 		return "redirect:/available_books";
 	}
 	@GetMapping("/my_books")
@@ -82,10 +92,11 @@ public class BookController {
 		return "myBooks";
 	}
 	@RequestMapping("/mylist/{id}")
-	public String getMyList(@PathVariable("id") int id) {
+	public String getMyList(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
 		Book b=service.getBookById(id);
 		MyBookList mb=new MyBookList(b.getId(),b.getName(),b.getAuthor(),b.getPrice());
 		myBookService.saveMyBooks(mb);
+		redirectAttributes.addFlashAttribute("success", "Residuo adicionado a lista compartilhada.");
 		return "redirect:/my_books";
 	}
 	@RequestMapping("/editBook/{id}")
@@ -95,8 +106,9 @@ public class BookController {
 		return "bookEdit";
 	}
 	@RequestMapping("/deleteBook/{id}")
-	public String deleteBook(@PathVariable("id")int id) {
+	public String deleteBook(@PathVariable("id")int id, RedirectAttributes redirectAttributes) {
 		service.deleteById(id);
+		redirectAttributes.addFlashAttribute("success", "Registro excluido.");
 		return "redirect:/available_books";
 	}
 }
