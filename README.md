@@ -13,6 +13,27 @@ sobre seu descarte.
 - Graficos de barras e pizza com base nos itens da lista e em uma meta anual informada na tela.
 - Pagina inicial com conteudo sobre lixo eletronico.
 
+## Capturas de Tela
+
+Capturas reais obtidas com Google Chrome, usando dados ficticios em um banco
+isolado de demonstracao, sem alterar registros durante a captura.
+
+### Cadastro de Residuos
+
+![Formulario de cadastro com tipo de lixo, quantidade e peso em gramas](docs/screenshots/cadastro.png)
+
+### Listagem de Registros
+
+![Listagem de residuos com acoes para adicionar a lista, editar e excluir](docs/screenshots/listagem.png)
+
+### Meu Lixo e Graficos
+
+![Lista de residuos com meta anual e graficos de barras e pizza](docs/screenshots/graficos.png)
+
+### Cadastro no Celular
+
+![Formulario de cadastro em uma tela de 390 por 844 pixels](docs/screenshots/cadastro-mobile.png)
+
 ## Tecnologias
 
 | Tecnologia | Uso |
@@ -98,10 +119,6 @@ em uma tela de 390 x 844 pixels, sem rolagem horizontal.
 O empacotamento e os testes automatizados nao foram concluidos neste ambiente:
 o download de `net.bytebuddy:byte-buddy-agent:1.12.18` retornou HTTP 403.
 A validacao funcional nao substitui a execucao da suite automatizada.
-
-Capturas de tela ainda nao foram incluidas: o navegador integrado produziu
-imagens incompletas e a politica corporativa bloqueou a captura por navegador
-headless. Imagens cortadas ou sem conteudo foram descartadas.
 
 ## Organizacao
 

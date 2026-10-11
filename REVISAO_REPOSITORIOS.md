@@ -54,7 +54,7 @@ o E-Waste, por exemplo, tem backend Java e templates HTML.
 - [x] Limpar os historicos do E-Waste e da copia RAR com backups locais. Ambos publicados com force-with-lease e referencias remotas verificadas; nenhuma senha literal de datasource encontrada nas referencias sanitizadas do E-Waste e nenhum RAR no historico alcancavel do legado.
 - [x] Preparar JDK 17 e MySQL portateis, compilar o codigo principal e validar os fluxos reais no navegador.
 - [ ] Executar a suite automatizada e o empacotamento: download de byte-buddy-agent:1.12.18 bloqueado com HTTP 403 neste ambiente. Nao desativar a validacao TLS nem remover testes para mascarar o bloqueio.
-- [ ] Capturar telas legiveis: navegador integrado produziu imagens incompletas e captura headless foi bloqueada por politica corporativa. Nenhuma imagem invalida deve ser publicada.
+- [x] Capturar telas legiveis: cadastro, listagem, graficos e cadastro no celular obtidos com Google Chrome, usando dados ficticios no banco isolado. Imagens incluidas no README sem alterar politicas corporativas ou registros do banco durante a captura.
 - [x] Atualizar o About e os topicos do E-Waste e adicionar topicos aos demais projetos publicos com base nas tecnologias verificadas.
 - [x] Renomear somente o E-Waste para sistema-gestao-lixo-eletronico e atualizar o remoto local, conforme aprovado.
 - [ ] Completar a revisao dos projetos privados sem acesso Git/API; tratar os indicadores de segredos no relatorio local, sem publicar seu conteudo.
