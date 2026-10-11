@@ -48,6 +48,15 @@ o E-Waste, por exemplo, tem backend Java e templates HTML.
 - Formulario de edicao corrigido para preservar os valores existentes; cancelamento sem dependencia de uma porta fixa.
 - Compilacao Java e fluxos de cadastro, edicao, cancelamento, lista, graficos e exclusao verificados com MySQL descartavel e registros ficticios.
 
+## Modernizacao do Frontend e Demonstracao
+
+- Navegacao, formularios e estilos compartilhados com Bootstrap 5.3.3, Lucide 0.468.0, Chart.js 4.4.7 e Montserrat servidos localmente, com licencas preservadas.
+- Busca por residuo, indicadores de quantidade e peso, validacao no servidor, mensagens de resultado, confirmacao de exclusao e graficos reutilizaveis.
+- Pagina inicial reorganizada com conteudo educativo, imagens existentes e indicacao de que as estimativas globais sao historicas.
+- Carga opcional por perfil demo e ativacao explicita: 12 registros e 9 itens no banco local. Cadastro original preservado; segunda carga sem duplicacao.
+- Testes completos no Chrome em desktop e celular passaram, incluindo recalculo dos graficos e navegacao movel. Capturas atualizadas no README.
+- A suite Java/Maven continua bloqueada por HTTP 403 no download de byte-buddy-agent:1.12.18. A carga de demonstracao nao foi aplicada a bancos de producao.
+
 ## Pendencias em Ordem de Prioridade
 
 - [ ] Trocar a senha de banco anteriormente exposta; se reutilizada, trocar tambem nos outros servicos. Nao registrar a nova senha em documentos ou mensagens.
